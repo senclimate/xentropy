@@ -33,7 +33,7 @@ print(SampEn.values)
 ```
 
 ## Applications
-- ENSO reguliarity in observation, AWI-CM3 and CMIP6 models (Fig. 2 in Stuecker et al. 2025)
+- ENSO reguliarity (SampEn) in observation, AWI-CM3 and CMIP6 models (Fig. 2 in Stuecker et al. 2025), an detailed example is available in [examples/enso_regularity.ipynb](examples/enso_regularity.ipynb)
 
 ## Acknowledgement
 
