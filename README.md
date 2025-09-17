@@ -1,16 +1,29 @@
 # xentropy
 
-Entropy measures for time series analysis with NumPy and Xarray.
+Entropy-based measures for time series analysis with **NumPy** and **Xarray**.  
 
-Implements:
-- Approximate Entropy (ApEn, Pincus 1991)
+> 📌 **Note:**  
+> If you use `xentropy` in your published work, please cite:
+>
+> Stuecker, M. F., Zhao, S., Timmermann, A., Ghosh, R., Semmler, T., Lee, S.-S., Moon, J.-Y., Jin, F.-F., Jung, T. (2025). *Global climate mode resonance due to rapidly intensifying El Niño–Southern Oscillation.*  **Nature Communications**.
+
+
+## Features
+Implements commonly used entropy metrics for time series analysis:
 - Sample Entropy (SampEn, Richman and Moorman 2000)
+- Approximate Entropy (ApEn, Pincus 1991)
 - Cross-ApEn / Cross-SampEn (Costa et al. 2002)
 - Multiscale Entropy (MSE) (Costa et al. 2002)
 
-
 ## Installation
+You can install `xentropy` in two ways:
 
+**From PyPI**
+```bash
+pip install xentropy
+```
+
+**From GitHub (latest version)**
 ```bash
 pip install git+https://github.com/senclimate/xentropy.git
 ```
@@ -33,13 +46,7 @@ print(SampEn.values)
 ```
 
 ## Applications
-- ENSO reguliarity (SampEn) in observation, AWI-CM3 and CMIP6 models (Fig. 2 in Stuecker et al. 2025), an detailed example is available in [examples/enso_regularity.ipynb](examples/enso_regularity.ipynb)
-
-## Acknowledgement
-
-If you use the xentropy code in your published work, please kindly cite:
-
-Stuecker, M. F., Zhao, S., Timmermann, A., Ghosh, R., Semmler, T., Lee, S.-S., et al. (2025). Global climate mode resonance due to rapidly intensifying El Niño–Southern Oscillation. **Nature Communications**. in revision. 
+- ENSO reguliarity (SampEn) in observation, AWI-CM3 and CMIP6 models (Fig. 2 in Stuecker et al. 2025), an detailed example for observation is available in [examples/enso_regularity.ipynb](examples/enso_regularity.ipynb)
 
 
 ## References
