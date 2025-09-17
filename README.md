@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/1046296740.svg)](https://doi.org/10.5281/zenodo.17145555)
+
 # xentropy
 
 Entropy-based measures for time series analysis with **NumPy** and **Xarray**.  
