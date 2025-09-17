@@ -1,42 +1,40 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# =========================================================
+# build.sh - Build and publish xentropy package
+# Usage:
+#   ./build.sh local     # Build and install locally
+#   ./build.sh test      # Upload to TestPyPI
+#   ./build.sh pypi      # Upload to PyPI
+# =========================================================
 
-# Exit immediately if a command exits with a non-zero status
-set -e
+set -e  # exit on error
 
-# ----------------------------
-# Config
-# ----------------------------
-PACKAGE_NAME="xentropy"
-DIST_DIR="dist"
-USE_TESTPYPI=false   # set to true to upload to TestPyPI
+MODE=${1:-local}
 
-# PyPI repository URLs
-PYPI_URL="https://upload.pypi.org/legacy/"
-TESTPYPI_URL="https://test.pypi.org/legacy/"
+echo "🚀 Starting build in mode: $MODE"
 
-# ----------------------------
-# Clean previous builds
-# ----------------------------
-echo "Cleaning previous builds..."
-rm -rf ${DIST_DIR} *.egg-info
+# Clean old builds
+rm -rf build dist *.egg-info
 
-# ----------------------------
-# Build the package
-# ----------------------------
-echo "Building the package..."
+# Build wheel + source distribution
 python -m build
 
-# ----------------------------
-# Upload to PyPI / TestPyPI
-# ----------------------------
-if [ "$USE_TESTPYPI" = true ]; then
-    echo "Uploading to TestPyPI..."
-    python -m twine upload --repository-url $TESTPYPI_URL ${DIST_DIR}/*
+if [ "$MODE" = "local" ]; then
+    echo "📦 Installing package locally (editable mode)..."
+    pip install -e .
+    echo "✅ Local install complete."
+elif [ "$MODE" = "test" ]; then
+    echo "📤 Uploading to TestPyPI..."
+    twine upload --repository testpypi dist/*
+    echo "✅ Uploaded to TestPyPI. Install with:"
+    echo "    pip install -i https://test.pypi.org/simple XRO"
+elif [ "$MODE" = "pypi" ]; then
+    echo "📤 Uploading to PyPI..."
+    twine upload dist/*
+    echo "✅ Uploaded to PyPI. Install with:"
+    echo "    pip install XRO"
 else
-    echo "Uploading to PyPI..."
-    python -m twine upload --repository-url $PYPI_URL ${DIST_DIR}/*
+    echo "❌ Unknown mode: $MODE"
+    echo "Usage: ./build.sh [local|test|pypi]"
+    exit 1
 fi
-
-echo "✅ Package $PACKAGE_NAME uploaded successfully."
-
-
