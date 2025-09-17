@@ -18,14 +18,8 @@ Implements commonly used entropy metrics for time series analysis:
 - Multiscale Entropy (MSE) (Costa et al. 2002)
 
 ## Installation
-You can install `xentropy` in two ways:
+You can install `xentropy` in the following way:
 
-**From PyPI**
-```bash
-pip install xentropy
-```
-
-**From GitHub (latest version)**
 ```bash
 pip install git+https://github.com/senclimate/xentropy.git
 ```
